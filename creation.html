@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer un article - Linuxpedia</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo-search">
+            <h1><a href="index.html">Linuxpedia</a></h1>
+            <form id="search-form">
+                <input type="text" id="search-input" placeholder="Rechercher sur Linuxpedia...">
+                <button type="submit">Rechercher</button>
+            </form>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="hasard.html">Article au hasard</a></li>
+            <li><a href="creation.html" class="active">Créer un article</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Créer un article</h2>
+        <form id="form-article">
+            <div>
+                <label for="titre">Titre de l'article :</label>
+                <input type="text" id="titre" name="titre" required>
+            </div>
+            <div>
+                <label for="categorie">Catégorie :</label>
+                <select id="categorie" name="categorie">
+                    <option value="distribution">Distribution</option>
+                    <option value="commande">Commande</option>
+                    <option value="tutoriel">Tutoriel</option>
+                    <option value="autre">Autre</option>
+                </select>
+            </div>
+            <div>
+                <label for="contenu">Contenu de l'article :</label>
+                <textarea id="contenu" name="contenu" rows="15" required></textarea>
+            </div>
+            <div>
+                <label for="tags">Tags (séparés par des virgules) :</label>
+                <input type="text" id="tags" name="tags">
+            </div>
+            <button type="submit">Publier l'article</button>
+        </form>
+    </main>
+    <footer>
+        <p>Un site créé par <a href="#">Ton équipe</a></p>
+        <p>© 2026 Linuxpedia – Tous droits réservés.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

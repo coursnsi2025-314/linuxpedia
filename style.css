@@ -1,0 +1,185 @@
+/* Reset et base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Linux Libertine', Georgia, serif;
+}
+
+body {
+    background-color: #f8f9fa;
+    color: #202122;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #f8f9fa;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #a2a9b1;
+}
+
+.logo-search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 1.8rem;
+}
+
+h1 a {
+    color: #202122;
+    text-decoration: none;
+}
+
+#search-form {
+    display: flex;
+    width: 40%;
+}
+
+#search-input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #a2a9b1;
+    border-radius: 2px 0 0 2px;
+}
+
+#search-form button {
+    padding: 0.5rem 1rem;
+    background-color: #36c;
+    color: white;
+    border: none;
+    border-radius: 0 2px 2px 0;
+    cursor: pointer;
+}
+
+nav {
+    background-color: #f8f9fa;
+    padding: 0.5rem 2rem;
+    border-bottom: 1px solid #a2a9b1;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav ul li {
+    margin-right: 1rem;
+}
+
+nav ul li a {
+    color: #0645ad;
+    text-decoration: none;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    color: #ba0000;
+    text-decoration: underline;
+}
+
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+}
+
+h2 {
+    border-bottom: 1px solid #a2a9b1;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.articles {
+    margin-top: 2rem;
+}
+
+#derniers-articles article {
+    border: 1px solid #a2a9b1;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: white;
+}
+
+#derniers-articles h4 {
+    margin-bottom: 0.5rem;
+}
+
+#derniers-articles p {
+    margin-bottom: 0.5rem;
+}
+
+#derniers-articles small {
+    color: #54595d;
+}
+
+form div {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+input, select, textarea, button {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #a2a9b1;
+    border-radius: 2px;
+}
+
+button {
+    background-color: #36c;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #2a4b8d;
+}
+
+#article-hasard {
+    border: 1px solid #a2a9b1;
+    padding: 1rem;
+    background-color: white;
+}
+
+#article-detail {
+    border: 1px solid #a2a9b1;
+    padding: 1rem;
+    background-color: white;
+}
+
+#article-detail h2 {
+    margin-bottom: 0.5rem;
+}
+
+.categorie {
+    color: #54595d;
+    margin-bottom: 1rem;
+}
+
+.contenu {
+    margin-bottom: 1rem;
+}
+
+.tags {
+    color: #54595d;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-top: 1px solid #a2a9b1;
+    margin-top: 2rem;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-titre="Titre de l'article">Article - Linuxpedia</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo-search">
+            <h1><a href="index.html">Linuxpedia</a></h1>
+            <form id="search-form">
+                <input type="text" id="search-input" placeholder="Rechercher sur Linuxpedia...">
+                <button type="submit">Rechercher</button>
+            </form>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="hasard.html">Article au hasard</a></li>
+            <li><a href="creation.html">Créer un article</a></li>
+        </ul>
+    </nav>
+    <main>
+        <article id="article-detail">
+            <h2 data-titre="Titre de l'article">Titre de l'article</h2>
+            <p class="categorie" data-categorie="Catégorie">Catégorie : Catégorie</p>
+            <div class="contenu" data-contenu="Contenu de l'article">
+                Contenu de l'article
+            </div>
+            <p class="tags" data-tags="tag1, tag2">Tags : <span></span></p>
+        </article>
+    </main>
+    <footer>
+        <p>Un site créé par <a href="#">Ton équipe</a></p>
+        <p>© 2026 Linuxpedia – Tous droits réservés.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
