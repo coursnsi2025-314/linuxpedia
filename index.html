@@ -1,43 +1,69 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil - Linuxpedia</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linuxpedia — Encyclopédie Linux libre</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <header>
-        <div class="logo-search">
-            <h1><a href="index.html">Linuxpedia</a></h1>
-            <form id="search-form">
-                <input type="text" id="search-input" placeholder="Rechercher sur Linuxpedia...">
-                <button type="submit">Rechercher</button>
-            </form>
-        </div>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="index.html" class="active">Accueil</a></li>
-            <li><a href="hasard.html">Article au hasard</a></li>
-            <li><a href="creation.html">Créer un article</a></li>
-        </ul>
-    </nav>
-    <main>
-        <h2>Bienvenue sur Linuxpedia</h2>
-        <p>Découvrez, partagez et contribuez à la plus grande encyclopédie collaborative sur Linux.</p>
-        <section class="articles">
-            <h3>Derniers articles</h3>
-            <div id="derniers-articles">
-                <!-- Les articles seront chargés via JavaScript -->
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>Un site créé par des gens qui te veulent du bien</p>
-        <p>2026 Linuxpedia – Tout est libre de droits.</p>
-    </footer>
-    <script src="script.js"></script>
+<body data-page="index">
+
+<header>
+  <a href="index.html" class="logo"><span class="prompt">&gt;</span>Linuxpedia</a>
+  <form id="search-form">
+    <input type="text" id="search-input" placeholder="Rechercher une distribution, commande, concept…" autocomplete="off">
+    <button type="submit">Rechercher</button>
+  </form>
+</header>
+
+<nav>
+  <a href="index.html"   class="nav-link" data-page="home">Accueil</a>
+  <a href="hasard.html"  class="nav-link" data-page="hasard">Article au hasard</a>
+  <a href="creation.html" class="nav-link" data-page="create">Créer un article</a>
+</nav>
+
+<main>
+  <div class="hero">
+    <div class="hero-label">Encyclopédie Linux libre</div>
+    <h2>Bienvenue sur Linuxpedia</h2>
+    <p>Une encyclopédie collaborative consacrée à l'univers Linux et au logiciel libre.</p>
+    <p>Distributions, commandes, environnements, concepts — tout l'écosystème GNU/Linux.</p>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-n" id="stat-count">—</div>
+        <div class="stat-l">Articles</div>
+      </div>
+      <div>
+        <div class="stat-n">100%</div>
+        <div class="stat-l">Libre</div>
+      </div>
+      <div>
+        <div class="stat-n">∞</div>
+        <div class="stat-l">Contributeurs</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-head">
+    <span class="sec-title">Articles récents</span>
+    <a href="creation.html" class="btn btn-green btn-sm">+ Nouvel article</a>
+  </div>
+
+  <div id="cards-grid"></div>
+  <button id="resetStorageButton">Réinitialiser le Stockage Local</button>
+
+  <script>
+    document.getElementById("resetStorageButton").addEventListener("click", function() {
+      localStorage.clear(); 
+    });
+  </script>
+
+</main>
+
+<footer>
+  <span class="footer-logo">Linuxpedia</span> — Encyclopédie Linux libre et collaborative · 2026
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
-
