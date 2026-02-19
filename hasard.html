@@ -1,40 +1,44 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Article au hasard - Linuxpedia</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article au hasard — Linuxpedia</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <header>
-        <div class="logo-search">
-            <h1><a href="index.html">Linuxpedia</a></h1>
-            <form id="search-form">
-                <input type="text" id="search-input" placeholder="Rechercher sur Linuxpedia...">
-                <button type="submit">Rechercher</button>
-            </form>
-        </div>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="hasard.html" class="active">Article au hasard</a></li>
-            <li><a href="creation.html">Créer un article</a></li>
-        </ul>
-    </nav>
-    <main>
-        <h2>Article au hasard</h2>
-        <div id="article-hasard">
-            <!-- L'article sera chargé via JavaScript -->
-        </div>
-        <button id="btn-hasard">Tirer un autre article</button>
-    </main>
-    <footer>
-        <p>Un site créé par des gens qui te veulent du bien</p>
-        <p>2026 Linuxpedia – Tout est libre de droits.</p>
-    </footer>
-    <script src="script.js"></script>
+<body data-page="hasard">
+
+<header>
+  <a href="index.html" class="logo"><span class="prompt">&gt;</span>Linuxpedia</a>
+  <form id="search-form">
+    <input type="text" id="search-input" placeholder="Rechercher sur Linuxpedia…" autocomplete="off">
+    <button type="submit">Rechercher</button>
+  </form>
+</header>
+
+<nav>
+  <a href="index.html"    class="nav-link" data-page="home">Accueil</a>
+  <a href="hasard.html"   class="nav-link" data-page="hasard">Article au hasard</a>
+  <a href="creation.html" class="nav-link" data-page="create">Créer un article</a>
+</nav>
+
+<main>
+  <div class="hasard-wrap">
+    <h2>Article au hasard</h2>
+    <p class="hasard-sub">Découvrez un article de la base au hasard.</p>
+
+    <div id="hasard-box">
+      <p class="hasard-placeholder">Cliquez sur le bouton pour tirer un article…</p>
+    </div>
+
+    <button class="btn-hasard" onclick="allerAuHasard()">🎲 Tirer un article</button>
+  </div>
+</main>
+
+<footer>
+  <span class="footer-logo">Linuxpedia</span> — Encyclopédie Linux libre et collaborative · 2026
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
-
