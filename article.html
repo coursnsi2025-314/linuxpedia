@@ -1,43 +1,60 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-titre="Titre de l'article">Article - Linuxpedia</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article — Linuxpedia</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <header>
-        <div class="logo-search">
-            <h1><a href="index.html">Linuxpedia</a></h1>
-            <form id="search-form">
-                <input type="text" id="search-input" placeholder="Rechercher sur Linuxpedia...">
-                <button type="submit">Rechercher</button>
-            </form>
+<body data-page="article">
+
+<header>
+  <a href="index.html" class="logo"><span class="prompt">&gt;</span>Linuxpedia</a>
+  <form id="search-form">
+    <input type="text" id="search-input" placeholder="Rechercher sur Linuxpedia…" autocomplete="off">
+    <button type="submit">Rechercher</button>
+  </form>
+</header>
+
+<nav>
+  <a href="index.html"    class="nav-link" data-page="home">Accueil</a>
+  <a href="hasard.html"   class="nav-link" data-page="hasard">Article au hasard</a>
+  <a href="creation.html" class="nav-link" data-page="create">Créer un article</a>
+</nav>
+
+<main id="article-main">
+  <div class="article-layout">
+
+    <div class="article-body">
+      <h2 id="article-titre"></h2>
+      <div class="article-meta">
+        <span id="article-badge" class="badge"></span>
+      </div>
+      <div class="article-content" id="article-contenu"></div>
+    </div>
+
+    <aside class="article-sidebar">
+      <div class="sbox">
+        <h5>Tags</h5>
+        <div class="tags-wrap" id="article-tags"></div>
+      </div>
+      <div class="sbox">
+        <h5>Actions</h5>
+        <div class="sidebar-actions">
+          <a id="btn-modifier" href="#" class="btn btn-green">✏️ Modifier</a>
+          <button id="btn-supprimer" class="btn btn-red">🗑️ Supprimer</button>
+          <a href="index.html" class="btn btn-ghost">← Accueil</a>
         </div>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="hasard.html">Article au hasard</a></li>
-            <li><a href="creation.html">Créer un article</a></li>
-        </ul>
-    </nav>
-    <main>
-        <article id="article-detail">
-            <h2 data-titre="Titre de l'article">Titre de l'article</h2>
-            <p class="categorie" data-categorie="Catégorie">Catégorie : Catégorie</p>
-            <div class="contenu" data-contenu="Contenu de l'article">
-                Contenu de l'article
-            </div>
-            <p class="tags" data-tags="tag1, tag2">Tags : <span></span></p>
-        </article>
-    </main>
-    <footer>
-        <p>Un site créé par des gens qui te veulent du bien</p>
-        <p>2026 Linuxpedia – Tout est libre de droits.</p>
-    </footer>
-    <script src="script.js"></script>
+      </div>
+    </aside>
+
+  </div>
+</main>
+
+<footer>
+  <span class="footer-logo">Linuxpedia</span> — Encyclopédie Linux libre et collaborative · 2026
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
-
