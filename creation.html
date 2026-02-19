@@ -1,60 +1,195 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Créer un article - Linuxpedia</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Créer un article — Linuxpedia</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Zone de drop image */
+    .img-drop-zone {
+      border: 2px dashed var(--border);
+      border-radius: var(--r);
+      padding: 1.2rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: .8rem;
+      cursor: pointer;
+      transition: border-color .2s, background .2s;
+      margin-bottom: .5rem;
+      position: relative;
+    }
+    .img-drop-zone:hover,
+    .img-drop-zone.dragover {
+      border-color: var(--green);
+      background: rgba(63,185,80,.05);
+      color: var(--green);
+    }
+    .img-drop-zone input[type="file"] {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+    }
+    .img-drop-zone .drop-icon { font-size: 1.5rem; margin-bottom: .3rem; }
+    .img-preview {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-top: .5rem;
+    }
+    .img-preview-item {
+      position: relative;
+      width: 80px;
+      height: 60px;
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .img-preview-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .img-preview-item .insert-label {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,.6);
+      color: #fff;
+      font-size: .65rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity .2s;
+      text-align: center;
+    }
+    .img-preview-item:hover .insert-label { opacity: 1; }
+    .img-or { color: var(--muted); font-size: .75rem; margin: .5rem 0; }
+    .url-img-row { display: flex; gap: .5rem; }
+    .url-img-row input {
+      flex: 1;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: .4rem .7rem;
+      font-size: .82rem;
+      border-radius: var(--r);
+      outline: none;
+    }
+    .url-img-row input:focus { border-color: var(--green); }
+    .url-img-row button {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: .4rem .8rem;
+      font-size: .78rem;
+      border-radius: var(--r);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all .15s;
+      width: auto;
+    }
+    .url-img-row button:hover { border-color: var(--green); color: var(--green); }
+  </style>
 </head>
-<body>
-    <header>
-        <div class="logo-search">
-            <h1><a href="index.html">Linuxpedia</a></h1>
-            <form id="search-form">
-                <input type="text" id="search-input" placeholder="Rechercher sur Linuxpedia...">
-                <button type="submit">Rechercher</button>
-            </form>
+<body data-page="create">
+
+<header>
+  <a href="index.html" class="logo"><span class="prompt">&gt;</span>Linuxpedia</a>
+  <form id="search-form">
+    <input type="text" id="search-input" placeholder="Rechercher sur Linuxpedia…" autocomplete="off">
+    <button type="submit">Rechercher</button>
+  </form>
+</header>
+
+<nav>
+  <a href="index.html"    class="nav-link" data-page="home">Accueil</a>
+  <a href="hasard.html"   class="nav-link" data-page="hasard">Article au hasard</a>
+  <a href="creation.html" class="nav-link" data-page="create">Créer un article</a>
+</nav>
+
+<main>
+  <div class="form-page-title">Créer un article</div>
+  <div class="form-page-sub">Le contenu supporte la syntaxe Markdown : **gras**, *italique*, # Titre…</div>
+
+  <div class="form-card">
+    <form id="form-create">
+
+      <div class="fgroup">
+        <label for="f-titre">Titre</label>
+        <input type="text" id="f-titre" placeholder="Ex : Fedora, vim, KDE Plasma…">
+      </div>
+
+      <div class="fgroup">
+        <label for="f-cat">Catégorie</label>
+        <select id="f-cat">
+          <option value="distribution">Distribution</option>
+          <option value="commande">Commande</option>
+          <option value="concept">Concept</option>
+          <option value="environnement">Environnement</option>
+          <option value="tutoriel">Tutoriel</option>
+          <option value="autre">Autre</option>
+        </select>
+      </div>
+
+      <div class="fgroup">
+        <label>Contenu (Markdown)</label>
+        <div class="toolbar">
+          <button type="button" onclick="wrapText('f-contenu','**','**')"><b>B</b></button>
+          <button type="button" onclick="wrapText('f-contenu','*','*')"><i>I</i></button>
+          <button type="button" onclick="wrapText('f-contenu','# ','')">H1</button>
+          <button type="button" onclick="wrapText('f-contenu','## ','')">H2</button>
+          <button type="button" onclick="wrapText('f-contenu','### ','')">H3</button>
         </div>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="hasard.html">Article au hasard</a></li>
-            <li><a href="creation.html" class="active">Créer un article</a></li>
-        </ul>
-    </nav>
-    <main>
-        <h2>Créer un article</h2>
-        <form id="form-article">
-            <div>
-                <label for="titre">Titre de l'article :</label>
-                <input type="text" id="titre" name="titre" required>
-            </div>
-            <div>
-                <label for="categorie">Catégorie :</label>
-                <select id="categorie" name="categorie">
-                    <option value="distribution">Distribution</option>
-                    <option value="commande">Commande</option>
-                    <option value="tutoriel">Tutoriel</option>
-                    <option value="autre">Autre</option>
-                </select>
-            </div>
-            <div>
-                <label for="contenu">Contenu de l'article :</label>
-                <textarea id="contenu" name="contenu" rows="15" required></textarea>
-            </div>
-            <div>
-                <label for="tags">Tags (séparés par des virgules) :</label>
-                <input type="text" id="tags" name="tags">
-            </div>
-            <button type="submit">Publier l'article</button>
-        </form>
-    </main>
-    <footer>
-        <p>Un site créé par des gens qui te veulent du bien</p>
-        <p>2026 Linuxpedia – Tout est libre droits.</p>
-    </footer>
-    <script src="script.js"></script>
+        <textarea id="f-contenu" placeholder="Rédigez votre article ici…"></textarea>
+      </div>
+
+      <!-- SECTION IMAGE -->
+      <div class="fgroup">
+        <label>Insérer une image</label>
+
+        <!-- Glisser-déposer ou cliquer -->
+        <div class="img-drop-zone" id="drop-zone-create">
+          <input type="file" id="img-file-create" accept="image/*" multiple>
+          <div class="drop-icon">🖼️</div>
+          <div>Glisse une image ici ou <u>clique pour choisir</u></div>
+          <div style="font-size:.7rem;margin-top:.3rem;color:var(--muted)">JPG, PNG, GIF, WebP — stockée directement dans l'article</div>
+        </div>
+
+        <!-- Prévisualisation des images chargées -->
+        <div class="img-preview" id="img-preview-create"></div>
+
+        <!-- OU via URL externe -->
+        <div class="img-or">— ou via URL externe —</div>
+        <div class="url-img-row">
+          <input type="text" id="img-url-create" placeholder="https://exemple.com/image.png">
+          <button type="button" onclick="insererImageURL('f-contenu','img-url-create')">Insérer</button>
+        </div>
+      </div>
+
+      <div class="fgroup">
+        <label for="f-tags">Tags <span style="color:var(--muted);text-transform:none;font-size:.75rem">(séparés par des virgules)</span></label>
+        <input type="text" id="f-tags" placeholder="Ex : shell, terminal, scripting">
+      </div>
+
+      <div class="form-actions">
+        <a href="index.html" class="btn btn-ghost">Annuler</a>
+        <button type="submit" class="btn btn-green">✓ Publier l'article</button>
+      </div>
+
+    </form>
+  </div>
+</main>
+
+<footer>
+  <span class="footer-logo">Linuxpedia</span> — Encyclopédie Linux libre et collaborative · 2026
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
-
